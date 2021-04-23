@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
+//Local File Import
+import { loginUser } from "../redux/actions/loginActions";
 
 class LoginForm extends Component {
   constructor(props) {
@@ -16,8 +20,9 @@ class LoginForm extends Component {
   };
 
   handleSubmit = (e) => {
-      e.preventDefault()
-    console.log(this.state);
+    e.preventDefault();
+    const user = this.state;
+    this.props.loginUser(user);
   };
   render() {
     return (
@@ -31,7 +36,8 @@ class LoginForm extends Component {
             id="email"
             value={this.state.email}
             onChange={this.handleChange}
-          />
+          />{" "}
+          <br />
           <label htmlFor="password">Password : </label>
           <input
             type="password"
@@ -40,10 +46,19 @@ class LoginForm extends Component {
             value={this.state.password}
             onChange={this.handleChange}
           />
+          <br />
+          <button type="submit">Login</button>
         </form>
       </div>
     );
   }
 }
 
-export default LoginForm;
+const mapStateToProps = (state) => ({
+  login: state.login,
+});
+const mapDispatchToProps = {
+  loginUser,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
