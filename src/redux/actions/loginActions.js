@@ -1,8 +1,10 @@
-import { LOGIN_REQUEST, REGISTER_USER } from "./types";
+import { ActionTypes } from "./types";
 
 export function loginUser(payload) {
-  return {
-    type: LOGIN_REQUEST,
-    payload: payload,
+  return function (dispatch) {
+    dispatch({
+      type: ActionTypes.LOGIN_REQUEST,
+      payload: payload,
+    });
   };
 }

@@ -1,4 +1,4 @@
-import { LOGIN_REQUEST } from "../actions/types";
+import { ActionTypes } from "../actions/types";
 
 //IntialState
 const initialState = {
@@ -12,7 +12,7 @@ const initialState = {
 //Login Reducer
 function loginReducer(state = initialState, action) {
   switch (action.type) {
-    case LOGIN_REQUEST:
+    case ActionTypes.LOGIN_REQUEST:
       return {
         ...state,
         isLoggedIn: true,

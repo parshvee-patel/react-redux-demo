@@ -1,24 +1,17 @@
-import { ADD_PRODUCT, DELETE_PRODUCT } from "../actions/types";
+import { ActionTypes } from "../actions/types";
 
 //IntialState
-const initialState = { product: [] };
+const initialState = { products: [] };
 
 //Production Reducer
-function productReducer(state = initialState, action) {
-  switch (action.type) {
-    case ADD_PRODUCT:
-      var p = state.product;
-      p.push(action.payload);
+function productReducer(state = initialState, {type,payload}) {
+  switch (type) {
+    case ActionTypes.ADD_PRODUCT:
+      var p = state.products;
+      p.push(payload);
       return {
         ...state,
-        product: p,
-      };
-    case DELETE_PRODUCT:
-      var a = state.product;
-      a.slice(12);
-      return {
-        ...state,
-        product: a,
+        products: p,
       };
     default:
       return state;

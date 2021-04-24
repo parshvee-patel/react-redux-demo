@@ -11,7 +11,6 @@ class UserData extends Component {
     const { isLoggedIn, user } = this.props.login;
     return (
       <div>
-        <Link to="/">Login Page</Link>
         <h1>Email: {user.email}</h1>
         <h1>Password: {user.password}</h1>
         <h1>isLogin: {isLoggedIn ? "LoggedIn" : "Logged Out"}</h1>

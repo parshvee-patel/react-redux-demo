@@ -1,15 +1,15 @@
-import { ADD_PRODUCT, DELETE_PRODUCT } from "./types";
+import { ActionTypes } from "./types";
 
-export const addProduct = (payload) => {
+export const setProducts = (products) => {
   return {
-    type: ADD_PRODUCT,
-    payload: payload,
+    type: ActionTypes.SET_PRODUCTS,
+    payload: products,
   };
 };
 
-export const deleteProduct = (payload) => {
-    return {
-      type: DELETE_PRODUCT,
-      payload: payload,
-    };
+export const selectedProduct = (product) => {
+  return {
+    type: ActionTypes.SELECTED_PRODUCTS,
+    payload: product,
   };
+};
