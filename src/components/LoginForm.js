@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 //Local File Import
 import { loginUser } from "../redux/actions/loginActions";
@@ -27,6 +28,7 @@ class LoginForm extends Component {
   render() {
     return (
       <div>
+        <Link to="/user-data">View Data</Link>
         <h1>Login</h1>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="email">Email :</label>

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class UserData extends Component {
   constructor(props) {
@@ -6,13 +8,20 @@ class UserData extends Component {
     this.state = {};
   }
   render() {
+    const { isLoggedIn, user } = this.props.login;
     return (
       <div>
-        <h1>Email</h1>
-        <h1>Password</h1>
+        <Link to="/">Login Page</Link>
+        <h1>Email: {user.email}</h1>
+        <h1>Password: {user.password}</h1>
+        <h1>isLogin: {isLoggedIn ? "LoggedIn" : "Logged Out"}</h1>
       </div>
     );
   }
 }
 
-export default UserData;
+const mapStateToProps = (state) => ({
+  login: state.login,
+});
+
+export default connect(mapStateToProps)(UserData);
