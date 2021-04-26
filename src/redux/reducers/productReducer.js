@@ -1,21 +1,26 @@
 import { ActionTypes } from "../actions/types";
 
-//IntialState
-const initialState = { products: [] };
+const intialState = {
+  products: [],
+};
 
-//Production Reducer
-function productReducer(state = initialState, {type,payload}) {
+export const productsReducer = (state = intialState, { type, payload }) => {
   switch (type) {
-    case ActionTypes.ADD_PRODUCT:
-      var p = state.products;
-      p.push(payload);
-      return {
-        ...state,
-        products: p,
-      };
+    case ActionTypes.SET_PRODUCTS:
+      return { ...state, products: payload };
     default:
       return state;
   }
-}
+};
 
-export default productReducer;
+export const selectedProductsReducer = (state = {}, { type, payload }) => {
+  console.log(type);
+  switch (type) {
+    case ActionTypes.SELECTED_PRODUCT:
+      return { ...state, ...payload };
+    case ActionTypes.REMOVE_SELECTED_PRODUCTS:
+      return {};
+    default:
+      return state;
+  }
+};
