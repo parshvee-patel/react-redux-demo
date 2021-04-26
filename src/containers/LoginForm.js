@@ -6,7 +6,7 @@ import { loginUser } from "../redux/actions/loginActions";
 
 class LoginForm extends Component {
   constructor(props) {
-    super(props);
+    super(props); 
     this.state = {
       email: "",
       password: "",
