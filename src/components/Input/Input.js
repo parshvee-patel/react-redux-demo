@@ -12,8 +12,9 @@ const Input = ({
   onChange,
   validators,
   className,
-  row,
+  rows,
   name,
+  required
 }) => {
   const [error, setError] = useState();
   const handleChange = (e) => {
@@ -32,21 +33,21 @@ const Input = ({
             className={className}
             placeholder={placeholder}
             value={value}
-            row={row}
+            rows={rows}
             onChange={handleChange}
           ></textarea>
         ) : (
           <input
+            required={required}
             id={name}
             type={type}
             placeholder={placeholder}
             value={value}
             className={className}
             onChange={handleChange}
-            style={error.message && { border: "solid 1px red" }}
           />
         )}
-        {error && <span>{error.message}</span>}
+        {error && <span style={{ color: "red" }}>{error.message}</span>}
       </div>
     </React.Fragment>
   );
@@ -54,14 +55,21 @@ const Input = ({
 
 Input.propTypes = {
   value: PropTypes.any,
-  type: PropTypes.string,
+  type: PropTypes.oneOf([
+    "text",
+    "number",
+    "password",
+    "email",
+    "file",
+    "textarea",
+  ]),
   className: PropTypes.string,
   placeholder: PropTypes.string,
   label: PropTypes.string,
   validators: PropTypes.array,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  required: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
-  type: PropTypes.oneOf(["text", "number", "password","textarea"]),
 };
 
 Input.defaultProps = {

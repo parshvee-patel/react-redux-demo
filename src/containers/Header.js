@@ -7,6 +7,7 @@ const Header = () => {
       <div className="ui container center">
         <h2>Shop</h2>
         <Link to="/">Login Page</Link>
+        <Link to="/staff-registration">Registration</Link>
         <Link to="/user-data">View Data</Link>
         <Link to="/product-listing">Product Listing</Link>
       </div>

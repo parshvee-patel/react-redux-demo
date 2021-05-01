@@ -1,21 +1,39 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Header from "./containers/Header";
-import LoginForm from "./containers/LoginForm";
-import ProductListing from "./containers/ProductListing";
-import ProductDetails from "./containers/ProductDetails";
-import UserData from "./containers/UserData";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import dashboard from "./containers/login/dashboard";
+// import Header from "./containers/Header";
+import Login from "./containers/login/login";
+import StaffRegistration from "./containers/staffDetails/staffRegistartion";
 
 function App() {
   return (
     <Router>
-      <div>
-      <Header />
+      <div className="container">
+        <nav className="navbar navbar-expand-lg navheader">
+          <div className="collapse navbar-collapse">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item">
+                <Link to={"/login"} className="nav-link">
+                  Login
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/staff-registration"} className="nav-link">
+                  Registration
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </nav>{" "}
+        <br />
         <Switch>
-          <Route exact path="/" component={LoginForm} />
-          <Route exact path="/user-data" component={UserData} />
-          <Route exact path="/product-listing" component={ProductListing} />
-          <Route exact path="/product/:productID" component={ProductDetails} />
+          <Route exact path="/dashboard" component={dashboard} />
+          <Route exact path="/login" component={Login} />
+          <Route
+            exact
+            path="/staff-registration"
+            component={StaffRegistration}
+          />
           <Route> 404 Not Found!</Route>
         </Switch>
       </div>
